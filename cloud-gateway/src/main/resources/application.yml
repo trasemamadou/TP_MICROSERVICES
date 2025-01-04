@@ -1,0 +1,35 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: CAMION-SERVICE
+          uri: lb://CAMION-SERVICE
+          predicates:
+            - Path=/camion/**
+        - id: DRIVER-SERVICE
+          uri: lb://DRIVER-SERVICE
+          predicates:
+            - Path=/driver/**
+        - id: VOYAGE-SERVICE
+          uri: lb://VOYAGE-SERVICE
+          predicates:
+            - Path=/voyage/**
+
+security:
+  oauth2:
+    resourceserver:
+      jwt:
+        issuer-uri: http://localhost:8080/realms/springboot-microservice-realm
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8767/eureka/
+  instance:
+    hostname: localhost
