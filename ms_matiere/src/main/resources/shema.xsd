@@ -17,16 +17,12 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-
-
-    <!-- Mise à jour de GetMatiereRequest en GetMatiereListRequest -->
     <xs:element name="GetMatiereListRequest">
         <xs:complexType>
             <xs:sequence/>
         </xs:complexType>
     </xs:element>
 
-    <!-- Mise à jour de GetMatiereResponse pour correspondre à la réponse de la liste -->
     <xs:element name="GetMatiereListResponse">
         <xs:complexType>
             <xs:sequence>

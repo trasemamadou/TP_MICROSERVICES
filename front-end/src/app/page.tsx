@@ -57,8 +57,6 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
-    console.log("Form data to be submitted:", formData);
-  
     try {
       const response = await fetch("http://localhost:8081/etudiants", {
         method: "POST",
@@ -68,7 +66,6 @@ export default function Home() {
   
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Error response:", errorData);
         alert(`Erreur : ${errorData.message || "Une erreur s'est produite."}`);
         return;
       }
@@ -76,11 +73,9 @@ export default function Home() {
       fetchEtudiants();
       handleCloseModal();
     } catch (error) {
-      console.error("Network error:", error);
       alert("Erreur de connexion au serveur.");
     }
   };
-  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -89,6 +84,17 @@ export default function Home() {
 
   return (
     <div>
+      {/* Navigation Menu */}
+      <nav>
+        <ul>
+          <li><a href="/pages/etudiant">Étudiant</a></li>
+          <li><a href="/pages/professeur">Professeur</a></li>
+          <li><a href="/pages/classe">Classe</a></li>
+          <li><a href="/pages/matiere">Matière</a></li>
+        </ul>
+      </nav>
+
+      {/* Main Content */}
       <h1>Liste des étudiants</h1>
       <button onClick={() => handleOpenModal()}>Nouveau étudiant</button>
       <table>
@@ -152,14 +158,36 @@ export default function Home() {
                   required
                 />
               </label>
-              <button type="submit">{isEditing ? "Mettre à jour" : "Ajouter"}</button>
-              <button type="button" onClick={handleCloseModal}>Annuler</button>
+              <button type="submit">{isEditing ? "Mettre à jour" : "Valider"}</button>
+              <button type="button" onClick={handleCloseModal}>Fermer</button>
             </form>
           </div>
         </div>
       )}
 
       <style jsx>{`
+        nav {
+          background-color: #f4f4f4;
+          padding: 10px 20px;
+          margin-bottom: 20px;
+        }
+        nav ul {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          gap: 20px;
+        }
+        nav ul li {
+          display: inline;
+        }
+        nav ul li a {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+        }
+        nav ul li a:hover {
+          text-decoration: underline;
+        }
         .modal {
           position: fixed;
           top: 0;
