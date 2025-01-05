@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Endpoint
 @RequiredArgsConstructor
 public class MatiereEndpoint {
-    private static final String NAMESPACE_URI = "http://www.groupeisi.com/matiere";
+    private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
 
     private final MatiereService matiereService;
 

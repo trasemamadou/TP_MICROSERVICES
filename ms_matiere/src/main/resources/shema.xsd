@@ -1,5 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/matiere"
-           xmlns="http://example.com/matiere" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
     <xs:element name="CreateMatiereRequest">
         <xs:complexType>
             <xs:sequence>
@@ -12,10 +12,12 @@
     <xs:element name="CreateMatiereResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="status" type="xs:string" />
+                <xs:element name="id" type="xs:int" />
+                <xs:element name="nom" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
 
     <!-- Mise à jour de GetMatiereRequest en GetMatiereListRequest -->
     <xs:element name="GetMatiereListRequest">

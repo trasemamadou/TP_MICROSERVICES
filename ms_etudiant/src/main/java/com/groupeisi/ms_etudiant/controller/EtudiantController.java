@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/etudiants")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @AllArgsConstructor
 public class EtudiantController {
     private final EtudiantService etudiantService;

@@ -1,4 +1,4 @@
-package com.groupeisi.ms_classe.controller;
+package com.groupeisi.ms_classe.resolver;
 
 import com.groupeisi.ms_classe.entities.ClasseEntity;
 import com.groupeisi.ms_classe.service.ClasseService;
