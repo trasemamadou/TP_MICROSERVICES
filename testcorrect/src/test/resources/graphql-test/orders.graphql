@@ -1,7 +1,0 @@
-query {
-    allOrders {
-        id
-        qty
-        status
-    }
-}
