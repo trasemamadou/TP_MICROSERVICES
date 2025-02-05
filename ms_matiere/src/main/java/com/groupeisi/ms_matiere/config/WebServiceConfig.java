@@ -1,6 +1,7 @@
 package com.groupeisi.ms_matiere.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -14,9 +15,10 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig {
     @Bean
-    public ServletRegistrationBean<?> messageDispatcherServlet() {
+    public ServletRegistrationBean<?> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-        servlet.setTransformWsdlLocations(true); // Optionnel : si vous utilisez WSDL
+        servlet.setTransformWsdlLocations(true);
+        servlet.setApplicationContext(applicationContext);
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
     @Bean(name = "matieres")

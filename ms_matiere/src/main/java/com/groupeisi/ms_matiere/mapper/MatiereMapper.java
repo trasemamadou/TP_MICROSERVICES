@@ -1,14 +1,14 @@
 package com.groupeisi.ms_matiere.mapper;
 
-import com.groupeisi.ms_matiere.dto.MatiereDto;
 import com.groupeisi.ms_matiere.entities.MatiereEntity;
+import io.spring.guides.gs_producing_web_service.GetMatiereByIdResponse;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface MatiereMapper {
-    public MatiereEntity toMatiereEntity(MatiereDto matiere);
-    public MatiereDto toMatiereDto(MatiereEntity matiere);
-    public List<MatiereDto> toMatiereDtolIST(List<MatiereEntity> matiereList);
+    public MatiereEntity toMatiereEntity(GetMatiereByIdResponse matiere);
+    public GetMatiereByIdResponse toMatiereByIdResponse(MatiereEntity matiere);
+    public List<GetMatiereByIdResponse> toMatiereByIdResonseList(List<MatiereEntity> matiereList);
 }

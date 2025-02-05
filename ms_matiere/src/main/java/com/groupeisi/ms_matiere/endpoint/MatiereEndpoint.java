@@ -1,27 +1,27 @@
 package com.groupeisi.ms_matiere.endpoint;
 
-import com.groupeisi.ms_matiere.dto.MatiereDto;
+import com.groupeisi.ms_matiere.converter.MatiereConverter;
 import com.groupeisi.ms_matiere.entities.MatiereEntity;
+import com.groupeisi.ms_matiere.mapper.MatiereMapper;
 import com.groupeisi.ms_matiere.service.MatiereService;
-import com.groupeisi.ms_matiere.soap.request.CreateMatiereRequest;
-import com.groupeisi.ms_matiere.soap.request.DeleteMatiereRequest;
-import com.groupeisi.ms_matiere.soap.request.GetMatiereByIdRequest;
-import com.groupeisi.ms_matiere.soap.request.UpdateMatiereRequest;
-import com.groupeisi.ms_matiere.soap.response.*;
-import lombok.RequiredArgsConstructor;
+import io.spring.guides.gs_producing_web_service.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Endpoint
+@CrossOrigin(origins = "http://localhost:3000")
+
 @RequiredArgsConstructor
 public class MatiereEndpoint {
     private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
-
+    private  final MatiereMapper matiereMapper;
     private final MatiereService matiereService;
 
     // CREATE
@@ -29,27 +29,38 @@ public class MatiereEndpoint {
     @ResponsePayload
     public CreateMatiereResponse createMatiere(@RequestPayload CreateMatiereRequest request) {
         MatiereEntity matiere = matiereService.createMatiere(request.getNom());
-        return CreateMatiereResponse.builder().id(matiere.getId()).nom(matiere.getNom()).build();
+        CreateMatiereResponse response = new CreateMatiereResponse();
+        response.setId(matiere.getId());
+        response.setNom(matiere.getNom());
+        return response;
     }
 
     // READ ALL
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetAllMatieresRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetMatiereListRequest")
     @ResponsePayload
-    public GetAllMatieresResponse getAllMatieres() {
-        List<MatiereEntity> matieres = matiereService.getAllMatieres();
-        List<MatiereDto> matieresDto = matieres.stream()
-                .map(m -> MatiereDto.builder().id(m.getId()).nom(m.getNom()).build())
-                .collect(Collectors.toList());
+    public GetMatiereListResponse getAllMatieres(@RequestPayload GetMatiereListRequest request) {
+        GetMatiereListResponse response = new GetMatiereListResponse();
 
-        return GetAllMatieresResponse.builder().matieres(matieresDto).build();
+        // Récupération des entités MatiereEntity depuis le service
+        List<MatiereEntity> matiereEntities = matiereService.getAllMatieres();
+
+        // Conversion des entités en objets Matiere (SOAP)
+        List<Matiere> matieres = MatiereConverter.convertToMatiereList(matiereEntities);
+
+        // Ajout des matières dans la réponse
+        response.setMatieres(matieres);
+
+        return response;
     }
-
     // READ BY ID
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetMatiereByIdRequest")
     @ResponsePayload
     public GetMatiereByIdResponse getMatiereById(@RequestPayload GetMatiereByIdRequest request) {
         MatiereEntity matiere = matiereService.getMatiereById(request.getId());
-        return GetMatiereByIdResponse.builder().id(matiere.getId()).nom(matiere.getNom()).build();
+        GetMatiereByIdResponse response = new GetMatiereByIdResponse();
+        response.setId(matiere.getId());
+        response.setNom(matiere.getNom());
+        return response;
     }
 
     // UPDATE
@@ -57,7 +68,10 @@ public class MatiereEndpoint {
     @ResponsePayload
     public UpdateMatiereResponse updateMatiere(@RequestPayload UpdateMatiereRequest request) {
         MatiereEntity matiere = matiereService.updateMatiere(request.getId(), request.getNom());
-        return UpdateMatiereResponse.builder().id(matiere.getId()).nom(matiere.getNom()).build();
+        UpdateMatiereResponse response = new UpdateMatiereResponse();
+        response.setId(matiere.getId());
+        response.setNom(matiere.getNom());
+        return response;
     }
 
     // DELETE

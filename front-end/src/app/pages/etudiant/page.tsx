@@ -165,9 +165,9 @@ export default function EtudiantPage() {
         </div>
       )}
 
-      <style jsx>{`
+<style jsx>{`
         nav {
-          background-color: #f4f4f4;
+          background-color: #f8f9fa;
           padding: 10px 20px;
           margin-bottom: 20px;
         }
@@ -175,18 +175,64 @@ export default function EtudiantPage() {
           list-style: none;
           padding: 0;
           display: flex;
-          gap: 20px;
-        }
-        nav ul li {
-          display: inline;
+          gap: 15px;
         }
         nav ul li a {
           text-decoration: none;
-          color: #333;
+          color: #007bff;
           font-weight: bold;
         }
         nav ul li a:hover {
           text-decoration: underline;
+        }
+        h1 {
+          text-align: center;
+        }
+        .new-class-btn {
+          background-color: #28a745;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .new-class-btn:hover {
+          background-color: #218838;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+        }
+        th {
+          background-color: #f2f2f2;
+        }
+        .delete-btn {
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .delete-btn:hover {
+          background-color: #c82333;
+        }
+        .edit-btn {
+          background-color: #ffc107;
+          color: black;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .edit-btn:hover {
+          background-color: #e0a800;
         }
         .modal {
           position: fixed;
@@ -203,17 +249,31 @@ export default function EtudiantPage() {
           background: white;
           padding: 20px;
           border-radius: 5px;
+          width: 90%;
           max-width: 500px;
-          width: 100%;
         }
-        table {
-          width: 100%;
-          border-collapse: collapse;
+        .submit-btn {
+          background-color: #007bff;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
         }
-        th, td {
-          border: 1px solid black;
-          padding: 8px;
-          text-align: left;
+        .submit-btn:hover {
+          background-color: #0056b3;
+        }
+        .close-btn {
+          background-color: #6c757d;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+        .close-btn:hover {
+          background-color: #5a6268;
         }
       `}</style>
     </div>

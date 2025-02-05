@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par Eclipse Implementation of JAXB, v3.0.0 
+Voir https://eclipse-ee4j.github.io/jaxb-ri 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2025.01.07 à 09:24:03 AM GMT 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://spring.io/guides/gs-producing-web-service">
+    <schemaBindings map="false">
+      <package name="io.spring.guides.gs_producing_web_service"/>
+    </schemaBindings>
+    <bindings scd="tns:CreateMatiereRequest">
+      <class ref="io.spring.guides.gs_producing_web_service.CreateMatiereRequest"/>
+    </bindings>
+    <bindings scd="tns:CreateMatiereResponse">
+      <class ref="io.spring.guides.gs_producing_web_service.CreateMatiereResponse"/>
+    </bindings>
+    <bindings scd="tns:GetMatiereListRequest">
+      <class ref="io.spring.guides.gs_producing_web_service.GetMatiereListRequest"/>
+    </bindings>
+    <bindings scd="tns:GetMatiereListResponse">
+      <class ref="io.spring.guides.gs_producing_web_service.GetMatiereListResponse"/>
+    </bindings>
+    <bindings scd="~tns:MatiereEntity">
+      <class ref="io.spring.guides.gs_producing_web_service.MatiereEntity"/>
+    </bindings>
+    <bindings scd="tns:GetMatiereByIdRequest">
+      <class ref="io.spring.guides.gs_producing_web_service.GetMatiereByIdRequest"/>
+    </bindings>
+    <bindings scd="tns:GetMatiereByIdResponse">
+      <class ref="io.spring.guides.gs_producing_web_service.GetMatiereByIdResponse"/>
+    </bindings>
+    <bindings scd="tns:UpdateMatiereRequest">
+      <class ref="io.spring.guides.gs_producing_web_service.UpdateMatiereRequest"/>
+    </bindings>
+    <bindings scd="tns:UpdateMatiereResponse">
+      <class ref="io.spring.guides.gs_producing_web_service.UpdateMatiereResponse"/>
+    </bindings>
+    <bindings scd="tns:DeleteMatiereRequest">
+      <class ref="io.spring.guides.gs_producing_web_service.DeleteMatiereRequest"/>
+    </bindings>
+    <bindings scd="tns:DeleteMatiereResponse">
+      <class ref="io.spring.guides.gs_producing_web_service.DeleteMatiereResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+
